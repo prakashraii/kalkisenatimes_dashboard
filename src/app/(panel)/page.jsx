@@ -6,6 +6,7 @@ import { useToast } from "@/components/Toast";
 import { api } from "@/lib/api";
 import { labelFor, CATEGORIES } from "@/lib/constants";
 import { formatDate } from "@/lib/format";
+import { Badge } from "@/lib/ui";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -64,9 +65,11 @@ export default function OverviewPage() {
           >
             <div>
               <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">{card.label}</p>
-              <p className="mt-1 text-2xl font-semibold text-neutral-900">
-                {loading ? "—" : card.value}
-              </p>
+              {loading ? (
+                <span className="mt-2 block h-7 w-12 animate-pulse rounded bg-neutral-200" />
+              ) : (
+                <p className="mt-1 text-2xl font-semibold text-neutral-900">{card.value}</p>
+              )}
             </div>
             <span className="grid h-9 w-9 place-items-center rounded-md bg-primary/10 text-primary">
               <Icon icon={card.icon} className="text-lg" />
@@ -91,7 +94,7 @@ export default function OverviewPage() {
           {
             key: "category",
             label: "Category",
-            render: (row) => labelFor(CATEGORIES, row.category),
+            render: (row) => <Badge>{labelFor(CATEGORIES, row.category)}</Badge>,
           },
           {
             key: "date",

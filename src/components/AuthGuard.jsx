@@ -18,8 +18,13 @@ export default function AuthGuard({ children }) {
 
   if (!ready) {
     return (
-      <div className="grid min-h-screen place-items-center text-sm text-neutral-500">
-        Loading…
+      <div className="grid min-h-screen place-items-center bg-neutral-100">
+        <div className="flex items-center gap-2">
+          <span className="grid h-9 w-9 animate-pulse place-items-center rounded-md bg-primary text-sm font-bold text-primary-foreground">
+            KS
+          </span>
+          <span className="text-sm font-medium text-neutral-600">Kalki Sena</span>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 "use client";
 
+import { api } from "@/lib/api";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -21,10 +22,33 @@ export default function AdminShell({ children }) {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    let active = true;
+    const loadUser = async () => {
+      const userId = localStorage.getItem("userId");
+      if (!userId) return;
+      try {
+        const data = await api(`/user/${userId}`);
+        if (active) setUser(data.result || null);
+      } catch {
+        if (active) setUser(null);
+      }
+    };
+    loadUser();
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const section = links.find((link) => isActive(pathname, link.href))?.label || "Overview";
+  const displayName = user?.name || "Admin";
+  const initial = displayName.slice(0, 1).toUpperCase();
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -98,7 +122,22 @@ export default function AdminShell({ children }) {
           >
             <Icon icon="lucide:menu" className="text-lg" />
           </button>
-          <p className="text-sm font-medium text-neutral-700">Kalki Sena</p>
+          <p className="min-w-0 flex-1 truncate text-sm font-medium text-neutral-800">{section}</p>
+          <div className="flex min-w-0 items-center gap-2">
+            {user?.profileImage ? (
+              <img src={user.profileImage} alt="" className="h-7 w-7 shrink-0 rounded-full object-cover" />
+            ) : (
+              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
+                {initial}
+              </span>
+            )}
+            <span className="min-w-0 leading-tight">
+              <span className="block max-w-[9rem] truncate text-xs font-medium text-neutral-800">{displayName}</span>
+              {user?.role && (
+                <span className="block max-w-[9rem] truncate text-[11px] text-neutral-500">{user.role}</span>
+              )}
+            </span>
+          </div>
         </header>
         <main className="p-3 md:p-5">{children}</main>
       </div>

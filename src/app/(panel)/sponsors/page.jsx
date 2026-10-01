@@ -10,7 +10,7 @@ import { useToast } from "@/components/Toast";
 import { api } from "@/lib/api";
 import { AD_POSITIONS, PAGE_SIZE, labelFor } from "@/lib/constants";
 import { formatDate } from "@/lib/format";
-import { ghostButtonClass, primaryButtonClass } from "@/lib/ui";
+import { Badge, ghostButtonClass, primaryButtonClass } from "@/lib/ui";
 import { Icon } from "@iconify/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
@@ -138,9 +138,7 @@ export default function SponsorsPage() {
           {
             key: "adPosition",
             label: "Position",
-            render: (row) => (
-              <span className="whitespace-nowrap text-xs">{labelFor(AD_POSITIONS, row.adPosition)}</span>
-            ),
+            render: (row) => <Badge>{labelFor(AD_POSITIONS, row.adPosition)}</Badge>,
           },
           {
             key: "date",

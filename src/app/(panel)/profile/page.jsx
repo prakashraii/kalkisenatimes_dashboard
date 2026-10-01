@@ -126,7 +126,23 @@ export default function ProfilePage() {
   };
 
   if (loading) {
-    return <p className="text-sm text-neutral-500">Loading profile…</p>;
+    return (
+      <div className="mx-auto max-w-xl">
+        <div className="mb-3 space-y-2">
+          <span className="block h-5 w-24 animate-pulse rounded bg-neutral-200" />
+          <span className="block h-4 w-56 animate-pulse rounded bg-neutral-200" />
+        </div>
+        <div className="space-y-3 rounded-lg border border-neutral-200 bg-white p-4">
+          <div className="flex items-center gap-3">
+            <span className="h-14 w-14 animate-pulse rounded-full bg-neutral-200" />
+            <span className="h-8 w-40 animate-pulse rounded bg-neutral-200" />
+          </div>
+          {Array.from({ length: 4 }, (_, index) => (
+            <span key={index} className="block h-8 animate-pulse rounded bg-neutral-200" />
+          ))}
+        </div>
+      </div>
+    );
   }
 
   const genderOptions = GENDERS.includes(form.gender) || !form.gender

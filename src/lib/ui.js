@@ -6,3 +6,11 @@ export const primaryButtonClass =
 
 export const ghostButtonClass =
   "inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-sm font-medium text-neutral-700 hover:bg-neutral-50";
+
+export function Badge({ children }) {
+  return (
+    <span className="inline-flex max-w-full items-center truncate rounded-md bg-primary/10 px-1.5 py-0.5 text-xs font-medium text-primary">
+      {children}
+    </span>
+  );
+}

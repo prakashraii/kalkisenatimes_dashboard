@@ -10,7 +10,7 @@ import { useToast } from "@/components/Toast";
 import { api } from "@/lib/api";
 import { CATEGORIES, PAGE_SIZE, labelFor } from "@/lib/constants";
 import { formatDate } from "@/lib/format";
-import { ghostButtonClass, primaryButtonClass } from "@/lib/ui";
+import { Badge, ghostButtonClass, primaryButtonClass } from "@/lib/ui";
 import { Icon } from "@iconify/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
@@ -129,9 +129,7 @@ export default function NewsPage() {
           {
             key: "category",
             label: "Category",
-            render: (row) => (
-              <span className="whitespace-nowrap text-xs">{labelFor(CATEGORIES, row.category)}</span>
-            ),
+            render: (row) => <Badge>{labelFor(CATEGORIES, row.category)}</Badge>,
           },
           {
             key: "authorName",

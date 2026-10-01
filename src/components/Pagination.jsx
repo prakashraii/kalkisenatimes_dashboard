@@ -14,7 +14,7 @@ export default function Pagination({ page, totalPages, onPage }) {
           type="button"
           disabled={current <= 1}
           onClick={() => onPage(current - 1)}
-          className="rounded-md border border-neutral-300 bg-white px-2.5 py-1 disabled:opacity-40"
+          className="rounded-md border border-neutral-300 bg-white px-2.5 py-1 hover:border-primary hover:text-primary disabled:opacity-40 disabled:hover:border-neutral-300 disabled:hover:text-inherit"
         >
           Previous
         </button>
@@ -22,7 +22,7 @@ export default function Pagination({ page, totalPages, onPage }) {
           type="button"
           disabled={current >= pages}
           onClick={() => onPage(current + 1)}
-          className="rounded-md border border-neutral-300 bg-white px-2.5 py-1 disabled:opacity-40"
+          className="rounded-md border border-neutral-300 bg-white px-2.5 py-1 hover:border-primary hover:text-primary disabled:opacity-40 disabled:hover:border-neutral-300 disabled:hover:text-inherit"
         >
           Next
         </button>

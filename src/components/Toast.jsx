@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon } from "@iconify/react";
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 
 const ToastContext = createContext(null);
@@ -25,11 +26,15 @@ export function ToastProvider({ children }) {
           <div
             key={toast.id}
             role="status"
-            className={`pointer-events-auto rounded-md px-3 py-2 text-sm text-white shadow-lg ${
+            className={`pointer-events-auto flex items-start gap-2 rounded-md px-3 py-2 text-sm text-white shadow-lg ${
               toast.type === "error" ? "bg-red-700" : "bg-neutral-900"
             }`}
           >
-            {toast.message}
+            <Icon
+              icon={toast.type === "error" ? "lucide:circle-alert" : "lucide:circle-check"}
+              className="mt-0.5 shrink-0 text-base"
+            />
+            <span>{toast.message}</span>
           </div>
         ))}
       </div>
