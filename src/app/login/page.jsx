@@ -55,14 +55,9 @@ export default function LoginPage() {
 
   return (
     <div className="grid min-h-screen bg-neutral-100 md:grid-cols-2">
-      <div className="flex items-center gap-3 bg-neutral-950 px-5 py-6 text-white md:flex-col md:items-start md:justify-center md:px-12">
-        <span className="grid h-10 w-10 place-items-center rounded-md bg-primary text-sm font-bold text-primary-foreground">
-          KS
-        </span>
-        <div>
-          <h1 className="text-lg font-semibold tracking-tight">Kalki Sena</h1>
-          <p className="text-sm text-neutral-400">Admin sign in</p>
-        </div>
+      <div className="flex items-center gap-4 bg-neutral-950 px-5 py-6 text-white md:flex-col md:items-start md:justify-center md:px-12">
+        <img src="/logo.png" alt="Kalki Sena Times" className="h-14 w-auto max-w-[14rem] object-contain md:h-20 md:max-w-[18rem]" />
+        <p className="text-sm text-neutral-400">Admin sign in</p>
       </div>
 
       <div className="grid place-items-center px-4 py-8">

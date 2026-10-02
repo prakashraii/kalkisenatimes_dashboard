@@ -4,6 +4,7 @@ import "./globals.css";
 export const metadata = {
   title: "Kalki Sena Admin",
   description: "Admin dashboard for Kalki Sena",
+  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({ children }) {

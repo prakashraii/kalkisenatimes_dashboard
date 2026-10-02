@@ -72,14 +72,9 @@ export default function AdminShell({ children }) {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center gap-2 border-b border-white/10 px-3 py-3.5">
-          <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-xs font-bold text-primary-foreground">
-            KS
-          </span>
-          <div className="leading-tight">
-            <p className="text-sm font-semibold text-white">Kalki Sena</p>
-            <p className="text-[11px] text-neutral-400">Admin</p>
-          </div>
+        <div className="border-b border-white/10 px-3 py-3">
+          <img src="/logo.png" alt="Kalki Sena Times" className="h-11 w-auto max-w-full object-contain" />
+          <p className="mt-1 text-[11px] text-neutral-400">Admin</p>
         </div>
 
         <nav className="flex-1 space-y-0.5 p-2" aria-label="Dashboard">
